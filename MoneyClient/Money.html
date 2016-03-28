@@ -1,0 +1,52 @@
+<html lang="en" ng-app="money">
+
+<head>
+<script src="angular/angular.min.js"></script>
+<script src="MoneyControllers.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="search">
+<input type="text" ng-model="query"></input>
+</div>
+<div class="main" ng-controller = "moneyCtrl">
+  <ul class="artistlist">
+    <li class="artist cf" ng-repeat="adv in advertisements | filter:query">
+      <div class="info">
+        <h2>{{adv.id}}</h2>
+        <h3>{{adv.sum}}$</h3>
+        <h3>{{adv.user_name}}</h3>
+        <h3>{{adv.adv_text}}</h3>
+        <h3>tel.{{adv.tel_number}}</h3>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div  ng-controller = "moneyCtrl">
+ <form>
+  <div>
+   <label>Sum</label>
+   <input type ="text" ng-model="advertisement.sum"></input>
+  </div>
+  <div>
+   <label>Name</label>
+   <input type ="text" ng-model="advertisement.user_name"></input>
+  </div>
+  <div>
+   <label>Text</label>
+   <input type ="text" ng-model="advertisement.adv_text"></input>
+  </div>
+  <div>
+   <label>Telephone Number</label>
+   <input type ="text" ng-model="advertisement.tel_number"></input>
+  </div>
+  <div>
+   <button ng-click="add()"> Add advertisement</button> 
+  </div>
+ </form>
+</div>>
+
+</body>
+</html>
