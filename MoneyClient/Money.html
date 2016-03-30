@@ -3,14 +3,53 @@
 <head>
 <script src="angular/angular.min.js"></script>
 <script src="MoneyControllers.js"></script>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="angular/jcs-auto-validate.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
+
 </head>
 
-<body>
-<div class="search">
-<input type="text" ng-model="query"></input>
+<body class="body" ng-controller = "moneyCtrl">
+
+<div class="container main-container"  >
+ <form ng-submit="add(theForm.$valid)" name="theForm" novalidate="novalidate">
+
+
+  <div class="form-group" ng-class="
+  {'has-error':!theForm.sum.$valid && (!theForm.$pristine || theForm.$submitted),
+   'has-success':theForm.sum.$valid && (!theForm.$pristine || theForm.$submitted)}">
+   <label for="sum" class="control-label">Sum</label>
+   <input type ="number" class="form-control" required="required" id="sum" name="sum" ng-model="advertisement.sum"></input>
+   <p class="help-block" ng-show="theForm.sum.$error.required && (!theForm.$pristine || theForm.$submitted)"> Fill in this field please</p>
+  </div>
+  <div class="form-group">
+   <label>Name</label>
+   <input type ="text" required="required" ng-pattern-err-type="wrongSimbolsInName" ng-pattern="/^[A-Za-z0-9_]{1,15}$/" class="form-control"  ng-model="advertisement.user_name"></input>
+  </div>
+  <div class="form-group">
+   <label>Text</label>
+   <input type ="text" required="required" class="form-control" ng-model="advertisement.adv_text"></input>
+  </div>
+  <div class="form-group">
+   <label>Telephone Number</label>
+   <input type ="text" required="required" class="form-control" ng-model="advertisement.tel_number"></input>
+  </div>
+  <div>
+   <button class="btn-lg" type="submit" > Add advertisement</button> 
+  </div>
+ </form>
 </div>
-<div class="main" ng-controller = "moneyCtrl">
+
+
+inpur test
+<input type="text" ng-model="test"></input>
+{{test}}
+
+</div>
+<div class="main" >
   <ul class="artistlist">
     <li class="artist cf" ng-repeat="adv in advertisements | filter:query">
       <div class="info">
@@ -19,34 +58,13 @@
         <h3>{{adv.user_name}}</h3>
         <h3>{{adv.adv_text}}</h3>
         <h3>tel.{{adv.tel_number}}</h3>
+        <button class="btn" ng-click="edit(adv)">edit</button>
       </div>
     </li>
   </ul>
 </div>
 
-<div  ng-controller = "moneyCtrl">
- <form>
-  <div>
-   <label>Sum</label>
-   <input type ="text" ng-model="advertisement.sum"></input>
-  </div>
-  <div>
-   <label>Name</label>
-   <input type ="text" ng-model="advertisement.user_name"></input>
-  </div>
-  <div>
-   <label>Text</label>
-   <input type ="text" ng-model="advertisement.adv_text"></input>
-  </div>
-  <div>
-   <label>Telephone Number</label>
-   <input type ="text" ng-model="advertisement.tel_number"></input>
-  </div>
-  <div>
-   <button ng-click="add()"> Add advertisement</button> 
-  </div>
- </form>
-</div>>
+
 
 </body>
 </html>
