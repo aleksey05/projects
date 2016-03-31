@@ -12,7 +12,7 @@ $http.get('http://localhost:8080/Money/adv/list').success(function(responce) {
    });
 
      $scope.advertisement={};
-     
+    
 
      $scope.edit = function(adv){
      	console.log(adv);
