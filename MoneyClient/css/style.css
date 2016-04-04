@@ -153,6 +153,17 @@ a.small {
   font-size: .9rem;
 }
 
+  
+form .ng-invalid-required.ng-dirty {
+  background: lightpink;
+}
+form  .ng-valid.ng-dirty{
+  background: lightgreen;
+}
+   
+   
+   
+
 
 /* Search Styles */
 

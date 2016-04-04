@@ -20,6 +20,12 @@ $http.get('http://localhost:8080/Money/adv/list').success(function(responce) {
         console.log($scope.advertisement);
       }    
 
+      $scope.delete = function(advId){
+     	console.log(advId);
+      $http.delete('http://localhost:8080/Money/adv/delete/'+ advId)
+      console.log(advId);
+      }    
+
     $scope.add = function(){
     $http.post('http://localhost:8080/Money/adv/add', $scope.advertisement).
             success(function(responce){

@@ -3,21 +3,22 @@
 <head>
 	<script src="angular/angular.min.js"></script>
 	<script src="MoneyControllers.js"></script>
-	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="angular/jcs-auto-validate.min.js"></script>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body class="body" ng-controller = "moneyCtrl">
+
 	<div>
 		<input tupe="text" class="search" placeholder="Sort out by name" ng-model=query.user_name></input>
 		<input tupe="text" class="search"  placeholder="Sort out by adverisement text" ng-model=query.adv_text></input>
 	</div> 
+
 	<div class="container main-container">
+
 		<div class="form-group">
 			<label>Order by user name</label>
 			<select class="form-control" ng-model="order">
@@ -25,20 +26,27 @@
 				<option value= "-user_name">user name(dsc)</option>	
 			</select>
 		</div>
+		<div>
+		 <input type="checkbox" ng-model="sum" value="sum">Order By Sum</input>
+		 <label ng-show="sum">Asc</label>
+		 <input type="radio" ng-show="sum" ng-model="sum_sort" value="sum"></input>
+		 <label ng-show="sum">Desc</label>
+		 <input type="radio" ng-show="sum" ng-model="sum_sort" value="-sum"></input>
+		</div>
 		<form ng-submit="add(theForm.$valid)" name="theForm" novalidate="novalidate">
 			<div class="form-group" ng-class="
 			{'has-error':!theForm.sum.$valid && (!theForm.$pristine || theForm.$submitted),
 			'has-success':theForm.sum.$valid && (!theForm.$pristine || theForm.$submitted)}">
 			<label for="sum" class="control-label">Sum</label>
 			<input type ="number" class="form-control" required="required" id="sum" name="sum" ng-model="advertisement.sum"></input>
-			<p class="help-block" ng-show="theForm.sum.$error.required && (!theForm.$pristine || theForm.$submitted)"> Fill in this field please</p>
+			<p class="help-block" ng-show="theForm.sum.$error.required && (!theForm.sum.$pristine || theForm.$submitted)"> Fill in this field please</p>
 		</div>
 		<div class="form-group">
 			<label>Name 
 				<span ng-click="order = 'user_name'" class="glyphicon glyphicon-menu-up" ></span>
 				<span ng-click="order = '-user_name'" class="glyphicon glyphicon-menu-down" ></span>
 			</label>
-			<input type ="text" required="required" ng-pattern-err-type="wrongSimbolsInName" ng-pattern="/^[A-Za-       z0-9_]{1,15}$/" class="form-control"  ng-model="advertisement.user_name"></input>
+			<input type ="text" required="required" ng-pattern-err-type="wrongSimbolsInName" ng-pattern="/^[A-Za-z0-9_]{1,15}$/" class="form-control"  ng-model="advertisement.user_name"></input>
 		</div>
 		<div class="form-group">
 			<label>Text</label>
@@ -57,7 +65,7 @@
 </div>
 <div class="main" >
 	<ul class="artistlist">
-		<li class="artist cf" ng-repeat="adv in advertisements | filter:query | orderBy:order">
+		<li class="artist cf" ng-repeat="adv in advertisements | filter:query | orderBy:order| orderBy:sum_sort">
 			<div class="info">
 				<h2>{{adv.id}}</h2>
 				<h3>{{adv.sum}}$</h3>
@@ -65,9 +73,12 @@
 				<h3>{{adv.adv_text}}</h3>
 				<h3>tel.{{adv.tel_number}}</h3>
 				<button class="btn" ng-click="edit(adv)">edit</button>
+				<button class="btn" ng-click="delete(adv.id)">delete</button>
 			</div>
 		</li>
 	</ul>
 </div>
+
 </body>
+
 </html>
