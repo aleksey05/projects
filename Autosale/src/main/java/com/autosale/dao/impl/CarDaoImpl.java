@@ -31,7 +31,7 @@ public class CarDaoImpl implements CarDao {
 	}
 
 	@Transactional
-	public void addNewCar(Car newCar) {
+	public void persistNewCar(Car newCar) {
 		em.persist(newCar);
 	}
 

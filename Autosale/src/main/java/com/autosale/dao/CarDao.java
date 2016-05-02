@@ -9,7 +9,7 @@ public interface CarDao {
 
 	public List<Car> getCarsByCriteria(Map<String, String> requestParams);
 
-	public void addNewCar(Car newCar);
+	public void persistNewCar(Car newCar);
 
 	public Car getCarById(int id);
 
