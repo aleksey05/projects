@@ -17,15 +17,15 @@
 	<div class="form-group">
 		<div class="row">
 			<div class="col-sm-4">
-				<ul>
-					<li>Brand:<c:out value="${car.brand}" /></li>
-					<li>Gear Type:<c:out value="${car.gear}" /></li>
-					<li>Production year:<c:out value="${car.year}" /></li>
-					<li>Colour:<c:out value="${car.colour}" /></li>
-					<li>Fuel Type :<c:out value="${car.fuel}" /></li>
-					<li>Addition Date :<c:out value="${car.date}" /></li>
-					<li>Mileage :<c:out value="${car.mileage}" /></li>
-				</ul>
+				<table>
+						<tr><td class="left"><label>Brand:</label></td><td><c:out value="${car.brand}" /></td></tr>
+						<tr><td class="left"><label>Gear Type:</label></td><td><c:out value="${car.gear}" /></tr>
+						<tr><td class="left"><label>Production year :</label></td><td><c:out value=" ${car.year}" /></tr>
+						<tr><td class="left"><label>Colour:</label></td><td><c:out value="${car.colour}" /></tr>
+						<tr><td class="left"><label>Fuel Type :</label></td><td><c:out value="${car.fuel}" /></tr>
+						<tr><td class="left"><label>Addition Date :</label></td><td><c:out value="${car.date}" /></tr>
+						<tr><td class="left"><label>Mileage :</label></td><td><c:out value="${car.mileage}" /></tr>
+					</table>
 			</div>
 			<div class="col-sm-4">
 				<a href="./"><img src="${car.image_url}" class="img-thumbnail"
@@ -45,9 +45,15 @@
 
 	<div class="hiden" id="coment_section">
 		<c:if test="${!comments.isEmpty()}">
+		 <table>
 			<c:forEach items="${comments}" var="comment">
+			 <tr> 
+			  <td>
 				<c:out value="${comment.text}" />
+			  </td>
+			 </tr> 
 			</c:forEach>
+		 </table>
 		</c:if>
 
 		<div class="form-group">

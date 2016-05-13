@@ -20,29 +20,29 @@
 	<div class="form-group">
 		<c:forEach items="${carList}" var="car">
 			<div class="row">
-				<div class="col-sm-4">
-					<ul>
-						<li>Brand:<c:out value="${car.brand}" /></li>
-						<li>Gear Type:<c:out value="${car.gear}" /></li>
-						<li>Production year:<c:out value="${car.year}" /></li>
-						<li>Colour:<c:out value="${car.colour}" /></li>
-						<li>Fuel Type :<c:out value="${car.fuel}" /></li>
-						<li>Addition Date :<c:out value="${car.date}" /></li>
-						<li>Mileage :<c:out value="${car.mileage}" /></li>
-					</ul>
+				<div class="col-sm-4 border">
+					<table>
+						<tr><td class="left"><label>Brand:</label></td><td><c:out value="${car.brand}" /></td></tr>
+						<tr><td class="left"><label>Gear Type:</label></td><td><c:out value="${car.gear}" /></tr>
+						<tr><td class="left"><label>Production year :</label></td><td><c:out value=" ${car.year}" /></tr>
+						<tr><td class="left"><label>Colour:</label></td><td><c:out value="${car.colour}" /></tr>
+						<tr><td class="left"><label>Fuel Type :</label></td><td><c:out value="${car.fuel}" /></tr>
+						<tr><td class="left"><label>Addition Date :</label></td><td><c:out value="${car.date}" /></tr>
+						<tr><td class="left"><label>Mileage :</label></td><td><c:out value="${car.mileage}" /></tr>
+					</table>
 				</div>
-				<div   class="col-sm-4">
+				<div   class="col-sm-4 border">
 					<a href="./car?carId=${car.id}"><img id="image" src="${car.image_url}" class="img-thumbnail"
 						 width="250" height="250" /></a>
 				</div>
 
 				<div class="col-sm-4">
 					<span>Owner info :</span>
-					<ul>
-						<li><c:out value="${car.user.name}" /></li>
-						<li><c:out value="${car.user.email}" /></li>
-						<li><c:out value="${car.getUser().getPhone_umber()}" /></li>
-					</ul>
+					<table>
+						<tr><td class="left"><label>Name:</label></td><td><c:out value="${car.user.name}" /></td></tr>
+						<tr><td class="left"><label>Email:</label></td><td><c:out value="${car.user.email}" /></td></tr>
+						<tr><td class="left"><label>Phone Number:</label></td><td><c:out value="${car.getUser().getPhone_umber()}" /></td></tr>
+					</table>
 				</div>
 			</div>
 		</c:forEach>

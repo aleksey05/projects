@@ -1,15 +1,37 @@
 
-.row
-{
-background-color:rgba(255,255,0,0.05);
-border:1px solid lightgrey;
-margin-top:auto;
-margin-right:auto;
-margin-bottom:10px;
-margin-left:auto;
+.form-group {
+	background: url("dark-blackboard.png");
 }
-.col-sm-4
-{
-padding:5px;
+.row {
+	 border-radius: 3px;
+	background: white;
+	padding: 2px;
+	border: 1px solid black;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	margin-left: auto;
+}
 
+.col-sm-4 {
+	padding: 5px;
+}
+.left
+{
+	 text-align: left;
+}
+body {
+	width: 85%;
+	margin: 0 auto;
+}
+html {
+	background: url("dark-blackboard.png");
+}
+td {
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
