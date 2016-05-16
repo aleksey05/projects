@@ -32,15 +32,17 @@ public class CarServiceImpl implements CarService {
 	@Autowired
 	UserDao userDao;
 
+	public Car getCarById(String carId) {
+		return carDao.getCarById(Integer.valueOf(carId));
+	}
+
 	public void addNewCar(Map<String, String> requestParams, MultipartFile image) {
 		addUploadedImageToServerFolder(image);
 		carDao.persistNewCar(setProperties(requestParams, imageUrl, getUserName()));
 	}
 
-	public List<Car> getCarsByCriteria(Map<String, String> requestParams) {
-		
-		
-		return null;
+	public List<Car> getCarsList(Map<String, String> requestParams) {
+		return carDao.getCarsByCriteria(requestParams);
 	}
 
 	public Car setProperties(Map<String, String> requestParams, String imageUrl, String name) {
@@ -77,7 +79,6 @@ public class CarServiceImpl implements CarService {
 			} catch (Exception e) {
 			}
 		}
-
 	}
 
 	public String getUserName() {
@@ -91,11 +92,6 @@ public class CarServiceImpl implements CarService {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
-	}
-
-	@Override
-	public Car getCarById(String carId) {
-		return carDao.getCarById(Integer.valueOf(carId));
 	}
 
 }

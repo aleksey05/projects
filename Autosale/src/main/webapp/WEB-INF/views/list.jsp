@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -13,15 +13,15 @@
 <link type="text/css" rel="stylesheet"	href="<c:url value="/resources/css/list.css" />" />
 <script src="<c:url value="/resources/java_script/list.js" />" /></script>
 <title>Cars List</title>
+
 </head>
-
-<body>
-
+ <body>
 	<div class="form-group">
 		<c:forEach items="${carList}" var="car">
 			<div class="row">
 				<div class="col-sm-4 border">
 					<table>
+					    <tr><td class="left"><label>Price:</label></td><td><c:out value="${car.price}$"/></td></tr>
 						<tr><td class="left"><label>Brand:</label></td><td><c:out value="${car.brand}" /></td></tr>
 						<tr><td class="left"><label>Gear Type:</label></td><td><c:out value="${car.gear}" /></tr>
 						<tr><td class="left"><label>Production year :</label></td><td><c:out value=" ${car.year}" /></tr>
@@ -47,6 +47,5 @@
 			</div>
 		</c:forEach>
 	</div>
-
-</body>
+ </body>
 </html>

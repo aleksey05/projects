@@ -1,6 +1,5 @@
 package com.autosale.controller;
 
-import com.autosale.dao.CarDao;
 import com.autosale.dao.CommentDao;
 import com.autosale.model.Car;
 import com.autosale.service.interfaces.CarService;
@@ -17,9 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/")
 public class CarController {
-
-	@Autowired
-	CarDao carDao;
 
 	@Autowired
 	CarService carService;
@@ -42,7 +38,7 @@ public class CarController {
 
 	@RequestMapping("/cars")
 	public ModelAndView getCarsByParams(@RequestParam Map<String, String> requestParams) {
-		List<Car> carList = carDao.getCarsByCriteria(requestParams);
+		List<Car> carList = carService.getCarsList(requestParams);
 		return new ModelAndView("list", "carList", carList);
 
 	}

@@ -13,5 +13,5 @@ public interface CarService {
 	
 	Car getCarById(String carId);
 
-	List<Car> getCarsByCriteria(Map<String, String> requestParams);
+	List<Car> getCarsList(Map<String, String> requestParams);
 }

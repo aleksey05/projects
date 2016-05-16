@@ -47,6 +47,14 @@ public class CarDaoImpl implements CarDao {
 		Root<Car> car = criteriaQuery.from(Car.class);
 		List<Predicate> predicates = new ArrayList<Predicate>();
 
+		if (!requestParams.get("priceFrom").isEmpty()) {
+			predicates.add(criteriaBuilder.greaterThanOrEqualTo(car.get("price"),
+					Integer.valueOf(requestParams.get("priceFrom"))));
+		}
+		if (!requestParams.get("priceTo").isEmpty()) {
+			predicates.add(criteriaBuilder.lessThanOrEqualTo(car.get("price"),
+					Integer.valueOf(requestParams.get("priceTo"))));
+		}
 		if (!requestParams.get("gearType").isEmpty()) {
 			predicates.add(criteriaBuilder.equal(car.get("gear"),
 					GearType.valueOf(requestParams.get("gearType").toUpperCase(Locale.ENGLISH))));

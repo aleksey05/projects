@@ -23,6 +23,8 @@ public class Car {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	private int price;
 
 	private String image_url;
 
@@ -71,6 +73,14 @@ public class Car {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public String getImage_url() {

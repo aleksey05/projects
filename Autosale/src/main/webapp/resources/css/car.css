@@ -1,18 +1,17 @@
-
-.hiden
-{
-display:none;
-
+.hiden {
+	margin: 0 auto;
+	display: none;
+	width: 100%;
 }
 
-.form-group
-{
-background: url("dark-blackboard.png");
+.form-group {
+	margin: 0 auto;
+	width: 85%;
+	background: url("dark-blackboard.png");
 }
 
-.row
- {
-    border-radius: 3px;
+.row {
+	border-radius: 3px;
 	background: white;
 	padding: 2px;
 	border: 1px solid black;
@@ -25,26 +24,34 @@ background: url("dark-blackboard.png");
 .col-sm-4 {
 	padding: 5px;
 }
-.left
-{
-text-align: left;
+
+.left {
+	text-align: left;
 }
-.form-control
-{
-	border:1px solid white;
+
+.form-control {
+	
+	border: 1px solid white;
 }
+
 body {
-background: url("dark-blackboard.png");	width: 85%;
+	height:100%;
+	background: url("dark-blackboard.png");
+	width: 85%;
 	margin: 0 auto;
 }
+
 html {
-background: url("dark-blackboard.png");
+	height:100%;
+	background-color: white;
 }
+
 td {
-    text-align: right;
-    border-bottom: 1px solid #ddd;
+	text-align: right;
+	border-bottom: 1px solid #ddd;
 }
+
 table {
-    border-collapse: collapse;
-    width: 100%;
+	border-collapse: collapse;
+	width: 100%;
 }

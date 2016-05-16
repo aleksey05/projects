@@ -21,8 +21,8 @@
 	<context:annotation-config />
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-	  <context:component-scan base-package="com.autosale" />
-     <context:component-scan base-package="com.autosale.dao" />
+	<context:component-scan base-package="com.autosale" />
+	<context:component-scan base-package="com.autosale.dao" />
 	<context:component-scan base-package="com.autosale.dao.impl" />
 	<context:component-scan base-package="com.autosale.controller" />
 	<context:component-scan base-package="com.autosale.model" />
@@ -59,13 +59,12 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-   
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-     <property name="maxUploadSize" value="9000000" />
-   </bean>
 
-	<!-- <bean id="filterMultipartResolver"
+	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="100000000" />
-	</bean> -->
+		<property name="maxUploadSize" value="9000000" />
+	</bean>
+
+	<!-- <bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+		<property name="maxUploadSize" value="100000000" /> </bean> -->
 </beans>

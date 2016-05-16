@@ -1,42 +1,34 @@
 package com.autosale.controller;
 
 import java.util.Map;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import com.autosale.service.interfaces.CustomUserDetailsService;
 
-import com.autosale.service.UserDetailsServiceImpl;
-
-/*@Controller*/
+@Controller
+@Transactional
 @RequestMapping("/user")
 public class UserController {
 
 	@Autowired
-	private UserDetailsServiceImpl userService;
+	private CustomUserDetailsService userService;
 
-	/*	@RequestMapping("/provide")
-	public ModelAndView provideUser(@ModelAttribute("userVO") UserVo userVo,
-			@RequestParam Map<String, String> requestParams) {
-		return new ModelAndView("userForm");
+	@RequestMapping("/provide")
+	public ModelAndView provideUser() {
+		return new ModelAndView("user_form");
 
 	}
 
 	@RequestMapping(value = "/accept", method = RequestMethod.POST)
-	public ModelAndView acceptUser(@Valid @ModelAttribute("userVO") UserVo userVo, BindingResult result,
-			@RequestParam Map<String, String> requestParams) {
-		if (result.hasErrors()) {
-			return new ModelAndView("userForm");
-		}
-		String userRoleId = requestParams.get("userRoleId");
-		userService.addNewUser(userVo, userRoleId);
+	public ModelAndView acceptUser(@RequestParam Map<String, String> requestParams) {
+		userService.addNewUser(requestParams);
 		return new ModelAndView("redirect:/");
 
-	}*/
+	}
 
 }

@@ -3,29 +3,29 @@ package com.autosale.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.autosale.dao.RoleDao;
 import com.autosale.dao.UserDao;
-import com.autosale.dao.impl.UserDaoImpl;
+import com.autosale.model.Car;
 import com.autosale.model.Role;
 import com.autosale.model.User;
 import com.autosale.model.UserStatus;
-
+import com.autosale.service.interfaces.CustomUserDetailsService;
 
 @Component
 @Qualifier("userDetailsService")
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements CustomUserDetailsService {
 
+	public static final int USER_ROLE_ID = 2;
+	
 	@Autowired
 	private UserDao userDao;
 
@@ -58,16 +58,30 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	}
 
-	/*@Transactional
-	public void addNewUser(User user, String userRoleId) {
+	@Transactional
+	public void addNewUser(Map<String, String> requestParams) {
 		List<Role> userRoleList = new ArrayList<Role>();
-		User user = new User();
-		user.setName(userVo.getName());
-		user.setPassword(userVo.getPassword());
-		userRoleList.add(roleDao.getRoleById(Integer.valueOf(userRoleId)));
-		user.setRoles(userRoleList);
-		user.setStatus(UserStatus.ACTIVE);
-		userDao.addUser(user);
+		userRoleList.add(roleDao.getRoleById(Integer.valueOf(USER_ROLE_ID)));
+		User newUser = new User();
+		newUser.setName(requestParams.get("name"));
+		newUser.setPhone_umber(requestParams.get("phone"));
+		newUser.setEmail(requestParams.get("email"));
+		newUser.setPassword(requestParams.get("password"));
+		newUser.setRoles(userRoleList);
+		newUser.setStatus(UserStatus.ACTIVE);
+		newUser.setCars(new ArrayList<Car>());
+		userDao.addUser(newUser);
 
-	}*/
+	}
+	
+//	private User setUserProperties(){
+//		User user = new User();
+//		
+//		
+//		return user;
+//		
+//		
+//		
+//	}
+	
 }

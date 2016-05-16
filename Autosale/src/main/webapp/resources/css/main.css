@@ -1,0 +1,16 @@
+#form
+{
+margin:0 auto;
+	
+}
+body {
+	height:100%;
+	background: url("dark-blackboard.png");
+	width: 85%;
+	margin: 0 auto;
+	
+}
+html {
+	background-color:white;
+	height:100%;
+}

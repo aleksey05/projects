@@ -12,13 +12,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <title>Login page</title>
+<%@ include file="/WEB-INF/views/includes/header.jsp" %>
 </head>
-
 <body>
 <h2>Please enter your name and password</h2>
 <div>
-	<form action="j_spring_security_check" method="post">
-		<table>
+	<form id="form" action="j_spring_security_check" method="post">
+		<table id="table">
 			<tr>
 				<td>Name:<input class="form-control"  placeholder="Enter name" name="j_username" /></td>
 			</tr>
@@ -31,17 +31,16 @@
 			</tr>
 		</table>
 		<br>
-	       <div>
-		     <input type="submit" class="btn btn-info btn-lg" value="Login" />
+	       <div class="button">
+		     <input id="sub" type="submit" class="btn btn-info btn-md" value="Login" />
           </div>
 	</form>
 </div>
 <br>
+    <a href=./user/provide><input id="reg" type="button" class="btn btn-danger btn-md" value="Register" /></a>
 	<form>
 		<span>${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</span>
 	</form>
-
-	<a href=./user/provide><input type="button" class="btn btn-danger btn-lg" value="Register" /></a>
 
 </body>
 </html>

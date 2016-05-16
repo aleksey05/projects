@@ -1,9 +1,13 @@
 
 .form-group {
+	height:100%;
+	width: 85%;
 	background: url("dark-blackboard.png");
-}
+	margin: 0 auto;
+	
+	}
 .row {
-	 border-radius: 3px;
+	border-radius: 3px;
 	background: white;
 	padding: 2px;
 	border: 1px solid black;
@@ -21,11 +25,15 @@
 	 text-align: left;
 }
 body {
+	background: url("dark-blackboard.png");
 	width: 85%;
 	margin: 0 auto;
+	
 }
 html {
-	background: url("dark-blackboard.png");
+	height:100%;
+	background-color:white;
+
 }
 td {
     text-align: right;
