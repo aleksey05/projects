@@ -1,4 +1,4 @@
-var money = angular.module('money',['jcs-autoValidate']);
+var advControllers = angular.module('advControllers',['jcs-autoValidate']);
 
 /*money.run(function(defaultErrorMesssageResolver){
 defaultErrorMesssageResolver.getErrorMessages().then(function(errorMessages){
@@ -6,31 +6,34 @@ defaultErrorMesssageResolver.getErrorMessages().then(function(errorMessages){
  });
 });*/
 
-money.controller('moneyCtrl', function($scope, $http){
+advControllers.controller('MoneyCtrl', function($scope, $http){
 $http.get('http://localhost:8080/Money/adv/list').success(function(responce) {
-    $scope.advertisements = responce; 
-   });
+      $scope.advertisements = responce; 
+    });
 
-     $scope.advertisement={};
-    
-
+    $scope.advertisement={};
+    $scope.persons = {
+      name:'Jim',
+      lastname:'Bean'
+    };
      $scope.edit = function(adv){
      	console.log(adv);
       $scope.advertisement=adv;
         console.log($scope.advertisement);
       }    
-
+      $scope.getAdvByid = function(advId){
+      $http.get('http://localhost:8080/Money/adv/add' + advId)
+      .succsses(function(responce){
+                  $scope.singleAdv  = responce;
+                })
+      }
       $scope.delete = function(advId){
-     	console.log(advId);
-      $http.delete('http://localhost:8080/Money/adv/delete/'+ advId)
-      console.log(advId);
+      $http.delete('http://localhost:8080/Money/adv/list/'+ advId)
       }    
-
-    $scope.add = function(){
-    $http.post('http://localhost:8080/Money/adv/add', $scope.advertisement).
+     $scope.add = function(){
+     $http.post('http://localhost:8080/Money/adv/add', $scope.advertisement).
             success(function(responce){
             	$scope.advertisement={};
-      	      console.log('ok')
      }).error(function(responce){
               console.log("error")
    });
@@ -38,4 +41,10 @@ $http.get('http://localhost:8080/Money/adv/list').success(function(responce) {
 });
 
 
+advControllers.controller('DetailedCtrl',function($scope,$http,$routeParams){
+  $scope.advId = $routeParams.advId;
 
+      $http.get('http://localhost:8080/Money/adv/list/' + $routeParams.advId).success(function(responce){
+                  $scope.singleAdv  = responce;
+                });
+});
