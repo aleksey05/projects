@@ -1,0 +1,20 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <div class="m_header">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+  </div>
+  <ul class="main_list">
+    <%for(var i =0; i<rows.length; i++ ){%>
+    <li><h3><a href="/category?id=<%= rows[i].categoryId %>"  ><%= rows[i].categoryTitle %></a></h3></li>
+    <%}%>
+    </ul>
+
+
+  </body>
+</html>

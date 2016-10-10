@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="m_header">
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+</div>
+<a href="/">Back</a>
+
+<ul>
+    <%for(var i =0; i<rows.length; i++ ){%>
+    <li><h3><a href="/project?id=<%= rows[i].projectId %>"  ><%= rows[i].title %></a></h3></li>
+    <%}%>
+</ul>
+
+
+</body>
+</html>

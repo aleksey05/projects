@@ -1,0 +1,40 @@
+body {
+  background-color: #555555;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+  text-decoration: none;
+}
+
+.m_header{width:50%;margin:0 auto;text-align:center;}
+.main_list{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main_list a{
+  text-align: center;
+  padding: 1%;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  font-weight: 700;
+  color: #fff;
+  float: left;
+  font-size: 25px;
+  font-family: "Bradley Hand ITC";
+  margin-left: 18%;
+  width: 117px;
+  line-height: 117px;
+}
+
+
+.main_list a:hover{
+
+  color:cornflowerblue;
+
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="m_header">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+</div>
+<a href="/category?id=<%= rows[0].categoryId %>">Back</a>
+<ul>
+
+    <li><h3> <%= rows[0].title %> </h3></li>
+    <li><h3> <%= rows[0].description %> </h3></li>
+    <li><h3> <%= rows[0].daysLeft %> </h3></li>
+    <li><h3> <%= rows[0].requiredSum %> </h3></li>
+    <li><h3> <%= payments[0].sum %> </h3></li>
+    <li><h3> <%= rows[0].projectHistory %> </h3></li>
+    <li><h3> <%= rows[0].videoLink %> </h3></li>
+
+</ul>
+<h1>Question Section</h1>
+<ul>
+    <%for(var i =0; i<rows.length;i++){%>
+    <li><%= rows[i].question %></li>
+    <%}%>
+</ul>
+<h1>You can ask your question </h1>
+<form action="/project/add/question" method="POST">
+    <input type="text" name="question" placeholder="ask your question"></input>
+    <input type="hidden" name="projectId" value="<%= rows[0].projectId %>"></input>
+    <input type="submit" value="Add question">
+</form>
+
+<h1>Payment Section</h1>
+<form action="/project/payment" method="POST">
+    <input type="text" name="payment" placeholder="input amount of yor payment"></input>
+    <input type="hidden" name="projectId" value="<%= rows[0].projectId %>"></input>
+    <input type="submit" value="Add payment">
+</form>
+
+</body>
+</html>
