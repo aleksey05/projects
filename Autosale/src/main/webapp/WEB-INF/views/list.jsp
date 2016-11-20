@@ -19,10 +19,13 @@
 	<div class="form-group">
 		<c:forEach items="${carList}" var="car">
 			<div class="row">
+				 <p class="top_label"> <c:out value="${car.brand}" />
+					   <c:out value="${car.model}"/></p>
+					  
+					 
 				<div class="col-sm-4 border">
 					<table>
 					    <tr><td class="left"><label>Price:</label></td><td><c:out value="${car.price}$"/></td></tr>
-						<tr><td class="left"><label>Brand:</label></td><td><c:out value="${car.brand}" /></td></tr>
 						<tr><td class="left"><label>Gear Type:</label></td><td><c:out value="${car.gear}" /></tr>
 						<tr><td class="left"><label>Production year :</label></td><td><c:out value=" ${car.year}" /></tr>
 						<tr><td class="left"><label>Colour:</label></td><td><c:out value="${car.colour}" /></tr>
@@ -44,7 +47,9 @@
 						<tr><td class="left"><label>Phone Number:</label></td><td><c:out value="${car.getUser().getPhone_umber()}" /></td></tr>
 					</table>
 				</div>
+	
 			</div>
+						
 		</c:forEach>
 	</div>
  </body>

@@ -231,6 +231,13 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
+		<dependency>
+		<!--  Jackson  -->
+   <groupId>org.codehaus.jackson</groupId>
+   <artifactId>jackson-mapper-asl</artifactId>
+   <version>1.5.3</version>
+</dependency>
 	</dependencies>
+	
 
 </project>

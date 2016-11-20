@@ -15,6 +15,7 @@ background-color:white;
 {
 width:50%;
 margin:0 auto;
+padding:5%;
 }
 h2
 {
@@ -22,11 +23,21 @@ h2
 }
 #sub
 {
+
 width:78px;
 }
 .button
 {
 margin-left:25%;
+}
+#reg
+{
+float:left;
+margin-left:25%;
+}
+.form-control
+{
+margin-bottom:5%;
 }
 </style>
 <script>

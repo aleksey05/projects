@@ -12,22 +12,30 @@
 <%@ include file="/WEB-INF/views/includes/user_form_header.jsp" %>
 </head>
 <body>
-
-<h2>Please enter your name and password</h2>
+<nav class="navbar navbar-inverse">
+	 <div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Autosale</a>
+		</div>
+		  <ul class="nav navbar-nav">
+			 <li class="active"><a href="/autosale">Back</a></li>
+		  </ul>
+	</div>
+	</nav>
 <div>
 	<form id="form" action="./accept" method="post">
 		<table id="table">
 			<tr>
-				<td>Name:<input id="name" class="form-control"  placeholder="Enter name" name="name" /></td><td><span id="name_err"> "Please input at least 4 symbols"</span></td>
+				<td><input id="name" class="form-control"  placeholder="Enter name" name="name" /></td><td><span id="name_err"> "Please input at least 4 symbols"</span></td>
 			</tr>
 			<tr>
-				<td>Phone Number:<input id="phone" type="text" class="form-control" placeholder="Enter Phone Number" name="phone" /></td><td><span id="phone_err">"Phone must contain only digits and be at least 5 symbols"</span></td>
+				<td><input id="phone" type="text" class="form-control" placeholder="Enter Phone Number" name="phone" /></td><td><span id="phone_err">"Phone must contain only digits and be at least 5 symbols"</span></td>
 			</tr>
 			<tr>
-				<td>Email:<input id="email" type="text" class="form-control" placeholder="Enter Email" name="email" /></td><td><span id="email_err"> Check Email</span></td>
+				<td><input id="email" type="text" class="form-control" placeholder="Enter Email" name="email" /></td><td><span id="email_err"> Check Email</span></td>
 			</tr>
 			<tr>
-				<td>Password:<input id="password" type="password" class="form-control" placeholder="Enter password" name="password" /></td><td><span id="password_err">Password should contain at least one digit and have min length of 5 symbols</span></td>
+				<td><input id="password" type="password" class="form-control" placeholder="Enter password" name="password" /></td><td><span id="password_err">Password should contain at least one digit and have min length of 5 symbols</span></td>
 			</tr>
 		</table>
 		<br>

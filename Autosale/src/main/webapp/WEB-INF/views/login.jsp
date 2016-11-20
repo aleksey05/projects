@@ -20,10 +20,10 @@
 	<form id="form" action="j_spring_security_check" method="post">
 		<table id="table">
 			<tr>
-				<td>Name:<input class="form-control"  placeholder="Enter name" name="j_username" /></td>
+				<td><input class="form-control"  placeholder="Enter name" name="j_username" /></td>
 			</tr>
 			<tr>
-				<td>Password:<input type="password" class="form-control" placeholder="Enter password" name="j_password" /></td>
+				<td><input type="password" class="form-control" placeholder="Enter password" name="j_password" /></td>
 			</tr>
 			<tr>
 				<td><input type="hidden" name="${_csrf.parameterName}"

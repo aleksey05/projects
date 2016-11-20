@@ -18,6 +18,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<table>
+				        <tr><td class="left"><label>Brand:</label></td><td id="carId"><c:out value="${car.id}" /></td></tr>
 						<tr><td class="left"><label>Brand:</label></td><td><c:out value="${car.brand}" /></td></tr>
 						<tr><td class="left"><label>Gear Type:</label></td><td><c:out value="${car.gear}" /></tr>
 						<tr><td class="left"><label>Production year :</label></td><td><c:out value=" ${car.year}" /></tr>
@@ -43,7 +44,18 @@
 		</div>
 	</div>
 
-	<div class="hiden" id="coment_section">
+       <div class="comments">
+       <ul class="comment_list">
+       </ul>
+       <div class="form-group">
+
+			<input type=text id="comment_text" class="form-control" placeholder="add your comment" /> <br /> 
+			<input class="btn btn-danger btn-lg" type=submit id="button" />
+
+		</div>
+       </div>
+
+	<!-- <div class="hiden" id="coment_section">
 		<c:if test="${!comments.isEmpty()}">
 		 <table>
 			<c:forEach items="${comments}" var="comment">
@@ -62,7 +74,7 @@
 			<input class="btn btn-danger btn-lg" type=submit id="button" />
 
 		</div>
-	</div>
+	</div> -->
 
 </body>
 </html>

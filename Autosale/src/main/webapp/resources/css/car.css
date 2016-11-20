@@ -1,15 +1,13 @@
 .hiden {
-	margin: 0 auto;
-	display: none;
-	width: 100%;
+	
+	margin: 1% auto;
+	width: 90%;
 }
-
-.form-group {
-	margin: 0 auto;
-	width: 85%;
-	background: url("dark-blackboard.png");
+.hiden table td {color:white; text-align: left; border:none;}
+.hiden table{margin: 2% auto; width: 84%;}
+.form-group {margin: 0 auto; width: 85%; background: url("dark-blackboard.png");
 }
-
+.comment_list > li{color:#fff;} 
 .row {
 	border-radius: 3px;
 	background: white;

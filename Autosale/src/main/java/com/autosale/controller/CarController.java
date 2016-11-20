@@ -28,7 +28,7 @@ public class CarController {
 		return new ModelAndView("addForm");
 
 	}
-
+	
 	@RequestMapping("/addNew")
 	public String addNewCar(@RequestParam Map<String, String> requestParams,
 			@RequestParam("image") MultipartFile image) {
