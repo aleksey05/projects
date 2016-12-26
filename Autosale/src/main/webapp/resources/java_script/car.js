@@ -8,7 +8,6 @@ $(function(){
 	$("#button").click(function(){
 		var text =  $(".form-control").val();
 		var carId = $("#carId").text();
-		alert(text + " " + carId);
 		$.post('http://localhost:8080/autosale/addNewComment', {comment_text:text, carId:carId}, function(){
 			getComments();
 		});	
