@@ -28,7 +28,7 @@
 					    <tr><td class="left"><label>Price:</label></td><td><c:out value="${car.price}$"/></td></tr>
 						<tr><td class="left"><label>Gear Type:</label></td><td><c:out value="${car.gear}" /></tr>
 						<tr><td class="left"><label>Production year :</label></td><td><c:out value=" ${car.year}" /></tr>
-						<tr><td class="left"><label>Colour:</label></td><td><c:out value="${car.colour}" /></tr>
+						<tr><td class="left"><label>Color:</label></td><td><c:out value="${car.colour}" /></tr>
 						<tr><td class="left"><label>Fuel Type :</label></td><td><c:out value="${car.fuel}" /></tr>
 						<tr><td class="left"><label>Addition Date :</label></td><td><c:out value="${car.date}" /></tr>
 						<tr><td class="left"><label>Mileage :</label></td><td><c:out value="${car.mileage}" /></tr>

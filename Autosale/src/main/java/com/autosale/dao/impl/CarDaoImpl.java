@@ -26,8 +26,10 @@ public class CarDaoImpl implements CarDao {
 
 	@Transactional(readOnly = true)
 	public List<Car> getCarsByCriteria(Map<String, String> requestParams) {
-		List<Car> list = em.createQuery(sortSearchParams(requestParams)).getResultList();
-		return list;
+		return em.createQuery(sortSearchParams(requestParams))
+//		           .setFirstResult(1)
+//		           .setMaxResults(3)
+		           .getResultList();
 	}
 
 	@Transactional

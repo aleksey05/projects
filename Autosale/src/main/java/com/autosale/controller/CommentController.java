@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,14 +20,14 @@ public class CommentController {
 	CommentDao commentDao;
 
 	
-	@RequestMapping("/getComment")
+	@RequestMapping(value= "/comment", method = RequestMethod.GET)
 	public List<Comment> getComment(@RequestParam("carId") Integer carId){
 		return commentDao.getCommentsByCarId(carId);
 	}
 	
 	
 	
-	@RequestMapping("/addNewComment")
+	@RequestMapping(value= "/comment", method = RequestMethod.POST)
 	public void addNewComment(@RequestParam("comment_text") String comment_text, 
 			@RequestParam("carId") Integer carId){
     	commentDao.addNewComment(comment_text, carId);
