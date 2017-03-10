@@ -14,24 +14,24 @@ import com.money.dao.AdvertisementDao;
 import com.money.entitiy.Advertisement;
 
 @RestController
-@RequestMapping("/adv")
+@RequestMapping("/advertisement")
 @Transactional
 public class AdvertisementController {
 
 	@Autowired
 	AdvertisementDao advDao;
 
-	@RequestMapping("/list")
+	@RequestMapping(value ="/", method = RequestMethod.GET)
 	public List<Advertisement> showAdvList() {
 		return advDao.getAdvList();
 	}
 
-	@RequestMapping("/list/{advId}")
+	@RequestMapping("/{advId}")
 	public Advertisement showAdvById(@PathVariable String advId) {
 		return advDao.getAdvById(advId);
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public List<Advertisement> addAdv(@RequestBody Advertisement adv) {
 		advDao.addAdv(adv);
 		return advDao.getAdvList();
