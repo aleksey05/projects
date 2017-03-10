@@ -6,45 +6,53 @@ defaultErrorMesssageResolver.getErrorMessages().then(function(errorMessages){
  });
 });*/
 
-advControllers.controller('MoneyCtrl', function($scope, $http){
-$http.get('http://localhost:8080/Money/adv/list').success(function(responce) {
+advControllers.controller('MoneyCtrl', function($scope, $http, loginService){
+$http.get('http://localhost:8080/Money/advertisement').success(function(responce) {
       $scope.advertisements = responce; 
     });
-
+    $scope.msg=' ';
     $scope.advertisement={};
-    $scope.persons = {
-      name:'Jim',
-      lastname:'Bean'
-    };
+       
      $scope.edit = function(adv){
-     	console.log(adv);
-      $scope.advertisement=adv;
+     	  console.log(adv);
+     $scope.advertisement=adv;
         console.log($scope.advertisement);
       }    
       $scope.getAdvByid = function(advId){
-      $http.get('http://localhost:8080/Money/adv/add' + advId)
-      .succsses(function(responce){
-                  $scope.singleAdv  = responce;
+       $http.get('http://localhost:8080/Money/advertisement/' + advId)
+        .succsses(function(responce){
+           $scope.singleAdv  = responce;
                 })
       }
       $scope.delete = function(advId){
-      $http.delete('http://localhost:8080/Money/adv/list/'+ advId)
+        $http.delete('http://localhost:8080/Money/advertisement/'+ advId)
       }    
-     $scope.add = function(){
-     $http.post('http://localhost:8080/Money/adv/add', $scope.advertisement).
-            success(function(responce){
-            	$scope.advertisement={};
-     }).error(function(responce){
+
+      $scope.login = function(){
+        
+
+        loginService.login($scope.user, $scope);
+      }    
+       $scope.logout = function(){
+        loginService.logout($scope.user);
+      }    
+
+
+      $scope.add = function(){
+        $http.post('http://localhost:8080/Money/advertisement', $scope.advertisement).
+          success(function(responce){
+            $scope.advertisements = responce; 
+            $scope.advertisement={};
+          }).error(function(responce){
               console.log("error")
+    });
+  };
+});
+
+
+advControllers.controller('DetailedCtrl', function($scope,$http,$routeParams){
+      $http.get('http://localhost:8080/Money/advertisement/' + $routeParams.advId).success(function(responce){
+       $scope.singleAdv  = responce;
    });
- };
 });
 
-
-advControllers.controller('DetailedCtrl',function($scope,$http,$routeParams){
-  $scope.advId = $routeParams.advId;
-
-      $http.get('http://localhost:8080/Money/adv/list/' + $routeParams.advId).success(function(responce){
-                  $scope.singleAdv  = responce;
-                });
-});

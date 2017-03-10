@@ -8,7 +8,10 @@
 	</div> 
 
 	<div class="container main-container">
-
+	1
+	{{$scope.user.name}}
+	1
+       <button ng-click="logout()">Logout</button>
 		<div class="form-group">
 			<label>Order by user name</label>
 			<select class="form-control" ng-model="order">
@@ -50,9 +53,11 @@
 			<input type ="text" required="required" class="form-control" ng-model="advertisement.tel_number"></input>
 		</div>
 		<div>
-			<button class="btn-lg" type="submit" > Add advertisement</button> 
+			<button class="btn-lg" type="submit"> Add advertisement</button> 
 		</div>
 	</form>
+
+
 
 
 

@@ -10,5 +10,10 @@ money.config(['$routeProvider', function($routeProvider){
 	when('/detailed/:advId',{
          templateUrl: 'partials/detailed.html',
 	     controller:'DetailedCtrl'}).
+	when('/login',{ 
+	       templateUrl: 'partials/login.html',
+	        controller:'MoneyCtrl'}).
     otherwise({redirectTo:'/list'});
 }]);
+
+
