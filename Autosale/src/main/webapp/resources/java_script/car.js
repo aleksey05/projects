@@ -9,7 +9,6 @@ $(function(){
 		var text =  $(".form-control").val();
 		var carId = $("#carId").text();
     	$.post('http://localhost:8080/autosale/comment', {comment_text:text, carId:carId}, function(){
-//		$.post('http://localhost:8080/autosale/addNewComment', {comment_text:text, carId:carId}, function(){
 			getComments();
 		});	
 		
@@ -33,7 +32,6 @@ $(function(){
 function getComments(){   
 	var carId = $("#carId").text();  
 	$.get('http://localhost:8080/autosale/comment', {carId:carId}, function(data){
-//	$.get('http://localhost:8080/autosale/getComment', {carId:carId}, function(data){
 		$(".comment_list").empty();
 		for(var i =0; i< data.length; i++){
 		$(".comment_list").append('<li>' + data[i].text + '</li>');
