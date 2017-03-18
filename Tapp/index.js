@@ -37,5 +37,5 @@ app.get('*', function(req, res) {
 });
 
 
-app.listen(7777);
+app.listen(process.env.PORT || 7777);
 console.log("App listening on port 7777");

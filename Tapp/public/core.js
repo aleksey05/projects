@@ -102,23 +102,26 @@
       .controller('Main', function ($scope, $http, userService, authService) {
 
 
-        $scope.login = function() {
+        $scope.login = function(valid) {
+          if(valid){
           userService.login($scope.username, $scope.password).then(function(res){
             // var token = res.data ? res.data.token : null;
             // if(token) { console.log('JWT:', token); }
             $scope.userId = res.data.user_id;
             $scope.message = res.data.message;
           });
+          }
         }
 
-        $scope.register = function() {
-          userService.register($scope.username, $scope.password)
-              .then(function(res){
-                $scope.message = res.data.message;
-              }, function(err){
-                $scope.message = err;
-              })
-
+        $scope.register = function(valid) {
+          if(valid) {
+            userService.register($scope.username, $scope.password)
+                .then(function (res) {
+                  $scope.message = res.data.message;
+                }, function (err) {
+                  $scope.message = err;
+                })
+          }
         }
 
 
@@ -145,7 +148,7 @@
         }
 
         $scope.deleteTodo = function(id){
-          $http.delete('/todos/remove/' + id)
+          $http.delete('/todos/' + id)
               .then(function(res) {
                 $scope.todos = res.data;
                 console.log(res.data);
@@ -155,7 +158,7 @@
         }
 
         $scope.createTodo = function(){
-          $http.post('/todos/add/',{text:$scope.text})
+          $http.post('/todos/',{text:$scope.text})
               .then(function(res) {
                 $scope.todos = res.data;
                 console.log(res.data);

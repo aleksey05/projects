@@ -55,7 +55,7 @@ function findIp(arr, ip){
 }
 
 
-router.delete('/remove/:todo_id/', function(req, res) {
+router.delete('/:todo_id/', function(req, res) {
     var user_id = helper.decodeUseId(req.headers['authorization']);
     console.log(req.headers.toString());
     Todo.remove({
@@ -86,7 +86,7 @@ router.delete('/remove/:todo_id/', function(req, res) {
 });
 
 
-router.post('/add', function(req, res) {
+router.post('/', function(req, res) {
     var user_id = helper.decodeUseId(req.headers['authorization']);
     Todo.create({
         text : req.body.text,

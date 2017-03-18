@@ -5,25 +5,39 @@
         <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
         <script src="core.js"></script>
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles/main.css" rel="stylesheet">
 
     </head>
     <body ng-app="app" ng-controller="Main">
 
     <div class="form-group col-sm-8 col-sm-offset-2 text-center">
-    <input type="text" class="form-control input-lg text-center" ng-model="username" placeholder="username"><br>
-    <input type="password" class="form-control input-lg text-center" ng-model="password" placeholder="password"><br>
-        <button class="btn btn-primary btn-lg" ng-click= "register()">Register</button>
-        <button class="btn btn-primary btn-lg" ng-click= "login()">Login</button>
+
+<form name="userForm">
+    <div class="form-group" ng-class="{'has-error':!userForm.username.$valid && !userForm.username.$pristine }">
+         <input type="text" name="username" required="required" class="form-control input-lg text-center" ng-model="username" placeholder="username"><br>
+         <p  class="help-block" ng-show ="!userForm.username.$valid && !userForm.username.$pristine">Name is required</p>
+    </div>
+    <div class="form-group" ng-class="{'has-error':!userForm.password.$valid && !userForm.password.$pristine }">
+         <input type="password" name="password" required="required" class="form-control input-lg text-center" ng-model="password" placeholder="password"><br>
+         <p class="help-block" ng-show ="!userForm.password.$valid && !userForm.password.$pristine">Password is required</p>
+    </div>
+</form>
+
+        <button class="btn btn-primary btn-lg" ng-click= "register(userForm.$valid)">Register</button>
+        <button class="btn btn-primary btn-lg" ng-click= "login(userForm.$valid)">Login</button>
 
         <button class="btn btn-primary btn-lg" ng-click= "logout()"  ng-show="isAuthed()">Logout</button>
         <button class="btn btn-primary btn-lg" ng-click= "getTodo()"  >Get Todo</button>
 
     </div>
+
+
     <br>
 
     <br><br>
-    <h3>{{message}}</h3>
 
+    <h3>{{message}}</h3>
+    <h3>{{userForm.$submitted}}</h3>
 
     <!-- FORM TO CREATE TODOS -->
     <div id="todo-form" class="row">
@@ -58,7 +72,6 @@
         </div>
       </div>
 
-  <input type = button ng-show="isOk()" value="button">
-{{length}}
+
     </body>
 </html>
