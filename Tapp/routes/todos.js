@@ -7,7 +7,7 @@ var express = require('express');
 var router = express.Router();
 var Todo = require('../public/models/todo');
 var User  = require('../public/models/user');
-var helper = require('../helper/helper');
+var decoder = require('../utils/decoder');
 var jwt = require('jsonwebtoken');
 var config = require('../config');
 const secret = config.secret;
@@ -22,7 +22,7 @@ router.use(function(req, res, next) {
             if (err) {
                 return res.json({success: false, message: 'Failed to authenticate token.'});
             } else {
-                var user_id = helper.decodeUseId((req.headers['authorization']));
+                var user_id = decoder.decodeUseId((req.headers['authorization']));
                 User.findOne({'_id': user_id}, function (err, user) {
                     if (err) {
                         return res.json({success: false, message: 'Failed to authenticate User'});
@@ -56,7 +56,7 @@ function findIp(arr, ip){
 
 
 router.delete('/:todo_id/', function(req, res) {
-    var user_id = helper.decodeUseId(req.headers['authorization']);
+    var user_id = decoder.decodeUseId(req.headers['authorization']);
     console.log(req.headers.toString());
     Todo.remove({
         _id : req.params.todo_id
@@ -76,7 +76,7 @@ router.delete('/:todo_id/', function(req, res) {
 
 
     router.get('/', function(req, res){
-    var user_id = helper.decodeUseId(req.headers['authorization']);
+    var user_id = decoder.decodeUseId(req.headers['authorization']);
     Todo.find({user_id:user_id},function(err, data) {
         if (err)
             res.send(err)

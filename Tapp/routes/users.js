@@ -8,7 +8,7 @@ var router = express.Router();
 var User  = require('../public/models/user');
 var config = require('../config');
 const secret = config.secret;
-var helper = require('../helper/helper');
+var decoder = require('../utils/decoder');
 
 
 
@@ -64,7 +64,7 @@ router.post('/register', function(req, res){
 
     router.post('/logout', function(req, res) {
         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
-        var user_id = helper.decodeUseId((req.headers['authorization']));
+        var user_id = decoder.decodeUseId((req.headers['authorization']));
         User.update({'_id':user_id},{ $pull: { 'activeIp': { ip: ip } } }, function(err, data){
             if(err){
                 res.send(err);

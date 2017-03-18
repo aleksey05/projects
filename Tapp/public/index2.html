@@ -13,11 +13,11 @@
     <div class="form-group col-sm-8 col-sm-offset-2 text-center">
 
 <form name="userForm">
-    <div class="form-group" ng-class="{'has-error':!userForm.username.$valid && !userForm.username.$pristine }">
+    <div class="form-group" ng-class="{'has-error':!userForm.username.$valid && !userForm.username.$pristine,'has-success':userForm.username.$valid}">
          <input type="text" name="username" required="required" class="form-control input-lg text-center" ng-model="username" placeholder="username"><br>
          <p  class="help-block" ng-show ="!userForm.username.$valid && !userForm.username.$pristine">Name is required</p>
     </div>
-    <div class="form-group" ng-class="{'has-error':!userForm.password.$valid && !userForm.password.$pristine }">
+    <div class="form-group" ng-class="{'has-error':!userForm.password.$valid && !userForm.password.$pristine,'has-success':userForm.password.$valid }">
          <input type="password" name="password" required="required" class="form-control input-lg text-center" ng-model="password" placeholder="password"><br>
          <p class="help-block" ng-show ="!userForm.password.$valid && !userForm.password.$pristine">Password is required</p>
     </div>
