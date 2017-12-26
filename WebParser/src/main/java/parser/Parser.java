@@ -29,22 +29,6 @@ public class Parser {
 		tracker = new Tracker();
 		selectedProductsList = new HashSet<>();
 		links = new HashSet<String>();
-//		links.add("https://www.aboutyou.de/kinder?page=2");
-//		links.add("https://www.aboutyou.de/kinder?page=3");
-//		links.add("https://www.aboutyou.de/kinder?page=4");
-//		links.add("https://www.aboutyou.de/kinder?page=5");
-//		links.add("https://www.aboutyou.de/kinder?page=6");
-//		links.add("https://www.aboutyou.de/kinder?page=7");
-//		links.add("https://www.aboutyou.de/kinder?page=8");
-//		links.add("https://www.aboutyou.de/kinder?page=9");
-//		links.add("https://www.aboutyou.de/kinder?page=10");
-//		links.add("https://www.aboutyou.de/kinder?page=11");
-//		links.add("https://www.aboutyou.de/kinder?page=12");
-//		links.add("https://www.aboutyou.de/kinder?page=13");
-//		links.add("https://www.aboutyou.de/kinder?page=14");
-//		links.add("https://www.aboutyou.de/kinder?page=15");
-//		links.add("https://www.aboutyou.de/kinder?page=16");
-
 	}
 
 	public Set<String> getLinks() {
@@ -58,8 +42,6 @@ public class Parser {
 	public void collectAllPagesLinks(String URL) {
 		if (URL.equals(BASE_URL) | URL.contains(BASE_URL + searchType)) {
 			if (!links.contains(URL)) {
-				System.out.print(URL);
-				System.out.println(" ---->   " + links.size());
 				links.add(URL);
 				try {
 					Document document = Jsoup.connect(URL).get();
@@ -69,18 +51,16 @@ public class Parser {
 						collectAllPagesLinks(link.absUrl("href"));
 					}
 				} catch (IOException e) {
-					System.err.println("For '" + URL + "': " + e.getMessage());
+					System.out.println(URL + "': " + e.getMessage());
 				}
 			}
 		}
 
 	}
 
-int track = 0;
 	public void selctPagesWithRequiredProducts() {
 
 		for (String page : links) {
-			System.out.println("Exploring page number " + track++);
 			try {
 				doc = Jsoup.connect(page).get();
 				tracker.countCalls();
@@ -89,37 +69,31 @@ int track = 0;
 			}
 			if (doc.select("*:containsOwn(" + keyword + ")").size() >= 1) {
 				fillProducts(doc);
-
 			}
 		}
 	}
 
 	private void fillProducts(Document doc) {
-		System.out.println("in fill products");
 
 		Elements brands = doc.select(".brand_ke66rm");
 		Elements productNames = doc.select(".name_1iurgbx");
 		Elements productLinks = doc.select("div.categoryTileWrapper_e296pg > a.anchor_wgmchy");
 
-		Elements productPrices = doc.select("span.price_1543wg1-o_O-highlight_1t1mqn4"); 
+	//	Elements productPrices = doc.select("span.price_1543wg1-o_O-highlight_1t1mqn4"); Prices are inclosed in different tags over the shop. Currently not included into searched objects. 
 		
 		
 		List<String> productLinksList = concatURLS(productLinks);
-		System.out.println("BRAND_SIZE  " + brands.size());
-		System.out.println("BRAND_NAMES  " + productNames.size());
-		System.out.println("PRODUCT_LINKS " + productLinksList.size());
 
 		for (int i = 0; i < brands.size(); i++) {
 			String brand = brands.get(i).text().toLowerCase();
 			String modelName = productNames.get(i).text().toLowerCase();
 			if (checkForCoincidence(keyword, brand, modelName)) {
-				addProduct(brands.get(i).text(), productNames.get(i).text(), productLinksList.get(i)); // +parameter
-																										// ProductPricre
+				addProduct(brands.get(i).text(), productNames.get(i).text(), productLinksList.get(i)); 
+																										     
 			}
 		}
 	}
 
-	int pn = 1;
 
 	private void addProduct(String brand, String modelName, String productLink) {
 		Product product = new Product();
@@ -146,16 +120,12 @@ int track = 0;
 			product.setBrand(brand);
 			product.setDescription(descriptionList);
 			product.setProductId(productId);
-			System.out.println(product!=null);
+			
 			selectedProductsList.add(product);
-			System.out.println("Product added " + pn++);
 		}
 	}
 
 	private boolean checkForCoincidence(String keyword, String brand, String productName) {
-		if (brand.contains(keyword) || productName.contains(keyword)) {
-			System.out.println("Page  " + track + " has required products ----> ");
-		}
 		return brand.contains(keyword) || productName.contains(keyword);
 	}
 
