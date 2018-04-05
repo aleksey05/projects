@@ -30,7 +30,7 @@
 			</div>
 			<div class="col-sm-4">
 				<a href="./"><img src="${car.image_url}" class="img-thumbnail"
-					alt="Yellow Flower" width="250" height="250" /></a>
+					width="250" height="250" /></a>
 			</div>
 
 			<div class="col-sm-4">

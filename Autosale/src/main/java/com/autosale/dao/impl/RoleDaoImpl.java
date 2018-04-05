@@ -13,7 +13,7 @@ import com.autosale.model.Role;
 public class RoleDaoImpl implements RoleDao {
 
 	@PersistenceContext
-	EntityManager em;
+	private EntityManager em;
 
 	@Transactional(readOnly = true)
 	public Role getRoleById(int roleId) {

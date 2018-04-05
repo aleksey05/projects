@@ -1,8 +1,9 @@
 package com.autosale.controller;
 
-import com.autosale.dao.CommentDao;
 import com.autosale.model.Car;
 import com.autosale.service.interfaces.CarService;
+import com.autosale.service.interfaces.CommentService;
+
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class CarController {
 
 	@Autowired
-	CarService carService;
+	private CarService carService;
 
 	@Autowired
-	CommentDao commentDao;
+	private CommentService commentService;
 
 	@RequestMapping("/add")
 	public ModelAndView add() {
@@ -46,7 +47,7 @@ public class CarController {
 	public ModelAndView getCars(@RequestParam("carId") String carId) {
 		ModelAndView modelAndView = new ModelAndView("car");
 		modelAndView.addObject("car", carService.getCarById(carId));
-		modelAndView.addObject("comments", commentDao.getCommentsByCarId(Integer.valueOf(carId)));
+		modelAndView.addObject("comments", commentService.getCommentsById(Integer.valueOf(carId)));
 		return modelAndView;
 	}
 

@@ -27,10 +27,10 @@ public class CarServiceImpl implements CarService {
 	private String imageUrl;
 
 	@Autowired
-	CarDao carDao;
+	private CarDao carDao;
 
 	@Autowired
-	UserDao userDao;
+	private UserDao userDao;
 
 	public Car getCarById(String carId) {
 		return carDao.getCarById(Integer.valueOf(carId));
@@ -45,7 +45,7 @@ public class CarServiceImpl implements CarService {
 		return carDao.getCarsByCriteria(requestParams);
 	}
 
-	public Car setProperties(Map<String, String> requestParams, String imageUrl, String name) {
+	private Car setProperties(Map<String, String> requestParams, String imageUrl, String name) {
 		Car car = new Car();
 		car.setAdditionalInfo(requestParams.get("additionalInfo"));
 		car.setBrand(requestParams.get("brand"));
@@ -63,7 +63,7 @@ public class CarServiceImpl implements CarService {
 
 	}
 
-	public void addUploadedImageToServerFolder(MultipartFile image) {
+	private void addUploadedImageToServerFolder(MultipartFile image) {
 		if (!image.isEmpty()) {
 			try {
 				byte[] bytes = image.getBytes();
@@ -90,7 +90,7 @@ public class CarServiceImpl implements CarService {
 		return imageUrl;
 	}
 
-	public void setImageUrl(String imageUrl) {
+	private void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
 

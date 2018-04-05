@@ -18,7 +18,7 @@ import com.autosale.model.Comment;
 public class CommentDaoImpl implements CommentDao {
 
 	@PersistenceContext
-	EntityManager em;
+	private EntityManager em;
 
 	@SuppressWarnings("unchecked")
 	public List<Comment> getCommentsByCarId(int carId) {
